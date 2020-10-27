@@ -1,18 +1,14 @@
 function loopyLighthouse(range, multiples, words) {
-  for (let i = range[0]; i <= range[1]; i++) {
-    let firstMultiple = i % multiples[0] === 0;
-    let secondMultiple = i % multiples[1] === 0;
+  const start = range[0];
+  const end = range[1];
+  for (let i = start; i <= end; i++) { //while loop more performative
+    const isDivByFirstMult = i % multiples[0] === 0;
+    const isDivBySecondMult = i % multiples[1] === 0;
+
     let msg = '';
-    if (firstMultiple) {
-      msg += words[0];
-    }
-    if (secondMultiple) {
-      msg += words[1];
-    }
-    if (!firstMultiple && !secondMultiple) {
-      msg = i;
-    }
-    console.log(msg);
+    msg += isDivByFirstMult ? words[0] : '';
+    msg += isDivBySecondMult ? words[1] : '';
+    console.log(msg ? msg: i);
   }
 }
 
